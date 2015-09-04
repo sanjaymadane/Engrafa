@@ -1,0 +1,1 @@
+curl https://dituat.pt.duffandphelps.com/DocumentIntegration.svc -H "Content-Type: text/xml" -H "SOAPAction: http://tempuri.org/IDocumentIntegration/SubmitDocument" -d @sample_soap.xml

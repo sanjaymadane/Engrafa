@@ -1,0 +1,40 @@
+{
+  "name": "engrafa-document-manager-assembly",
+  "version": "0.0.0",
+  "description": "Extracts highly confident, structured data through crowdsourcing.",
+  "main": "EngrafaDocumentManager",
+  "author": "arvind81983",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudspokes/cr-engrafa.git"
+  },
+  "dependencies": {
+    "agentkeepalive": "0.2.2",
+    "async": "^0.9.0",
+	"aws-sdk": "2.0.19",
+	"body-parser": "1.9.1",
+    "connect-busboy": "0.0.2",
+    "connect-multiparty": "1.2.5",
+	"cookie-parser": "1.3.3",
+    "encoding": "0.1.10",
+	"express": "4.9.7",
+    "form-data": "^0.1.4",
+	"http": "0.0.0",
+    "localeval": "^13.12.11",
+    "mime": "1.2.11",
+    "mongoose": "^3.8.12",
+	"mongoose-random": "0.1.1",
+    "multer": "0.1.6",
+    "passport": "^0.2.0",
+    "passport-oauth2": "^1.1.2",
+    "request": "2.47.0",
+    "rox": "0.0.1-13",
+	"shelljs": "0.3.0",
+    "superagent": "^0.20.0",
+    "underscore": "^1.6.0",
+	"uuid": "2.0.1",
+    "winston": "^0.7.3",
+    "xml-writer": "^1.4.1"
+  }
+}

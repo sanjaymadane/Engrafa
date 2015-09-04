@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="">MetaTasker <span ng-if="isAdmin">Admin</span></a>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav drop-on-hover">
+            <li data-active-link="active" ng-if="isAdmin"><a href="/users">Users</a></li>
+            <li data-active-link="active" ng-if="!isAdmin"><a href="/reset-password">Reset Password</a></li>
+            <li data-active-link="active" ng-if="isAdmin"><a href="/clientconfigs">Client Configs</a></li>
+            <li data-active-link="active" ng-if="isAdmin"><a href="/workflowconfigs">Workflow Configs</a></li>
+            <li class="dropdown" ng-if="isAdmin">
+                <a href="" role="button" aria-expanded="false">Transformed Results <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li data-active-link="active">
+                        <a href="" data-ng-click="openResultListLink('all')">All</a>
+                    </li>
+                    <li data-active-link="active">
+                        <a href="" data-ng-click="openResultListLink('import_succeeded')">Import Succeeded</a>
+                    </li>
+                    <li data-active-link="active">
+                        <a href="" data-ng-click="openResultListLink('import_failed')">Import Failed</a>
+                    </li>
+                    <li data-active-link="active">
+                        <a href="" data-ng-click="openResultListLink('rejected')">Rejected</a>
+                    </li>
+                </ul>
+            </li>
+            <li data-active-link="active" ng-if="!isAdmin"><a href="" data-ng-click="openResultListLink('import_failed')">Transformed Results</a></li>
+            <li data-active-link="active"><a href="/reports">Reports</a></li>
+            <li><a href="" ng-click="logout()">Log Out</a></li>
+        </ul>
+    </div><!--/.nav-collapse -->
+</div>

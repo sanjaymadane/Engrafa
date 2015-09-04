@@ -1,0 +1,115 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 130px;
+  padding-top: 80px;
+}
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 25px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+.back-btn-margin {
+    margin-bottom: 10px;
+}
+
+.alpha {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0.6;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.alert-container .alert:hover{
+    cursor: pointer;
+}
+
+.state-icon {
+    left: -5px;
+}
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
+}
+
+.ng-table-pager {
+    display: none;
+}
+
+.CodeMirror {
+    margin-bottom: 10px;
+    min-height: 500px;
+}
+.search-doc .CodeMirror {
+    height: 200px;
+    min-height: 200px;
+}
+.CodeMirror-scrollbar-filler {
+    background: transparent;
+}
+
+.log-summary {
+    max-height: 500px;
+    overflow: scroll;
+    word-break: normal;
+    word-wrap: normal;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+#toast-container {
+    margin-top: 51px;
+}
+
+.right-link {
+    margin-top: 20px;
+}
+
+.evaluation-context-item .edit-button {
+    display: none;
+}
+.evaluation-context-item:hover .edit-button {
+    display: inline-block;;
+}
+
+.evaluation-context-edit {
+    max-width: 300px;
+}
+
+.edit-xml .CodeMirror {
+    height: 250px;
+    min-height: 250px;
+}

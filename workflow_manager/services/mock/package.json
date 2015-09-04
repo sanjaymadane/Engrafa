@@ -1,0 +1,15 @@
+{
+  "name": "mockAPI",
+  "version": "1.0.0",
+  "main": "mockCrowdFlowerAPI.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "dependencies": {
+    "mongojs": "^0.18.1",
+    "package.json": "0.0.0",
+    "restify": "^2.8.5"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,15 @@
+<form role="form" name="form" class="col-md-offset-4 col-md-4 well" autocomplete="off">
+	<div class="form-group">
+		<label>Username</label>
+		<input class="input form-control" id="username" ng-model="username" type="text" placeholder="Username"/>
+	</div>
+	<div class="form-group">
+		<label>Password</label>
+		<input class="input form-control" id="password" ng-model="password" type="password" placeholder="Password"/>
+	</div>
+	<div class="form-group">
+		<label>Client Id</label>
+		<input class="input form-control" ng-model="clientId" type="text" placeholder="Client Id"/>
+	</div>
+	<button class="btn btn-primary pull-right" ng-click="addUser(username, password, clientId)" ng-disabled="!username||!password||!clientId">Add</button>
+</form>

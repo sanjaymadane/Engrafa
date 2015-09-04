@@ -1,0 +1,48 @@
+<form role="form" class="col-md-offset-2 col-md-8 well">
+  <div class="form-group" ng-show="currentConfig.id">
+    <label>Id</label>
+    <input class="input form-control" ng-model="currentConfig.id" type="text" disabled/>
+  </div>
+  <div class="form-group">
+    <label>Workflow Id</label>
+    <input class="input form-control" ng-model="currentConfig.workflowId" type="text" placeholder="Workflow Id" ng-disabled="currentConfig.id"/>
+  </div>
+  <div class="well" ng-show="currentConfig.id">
+    <label>Transformation Rules</label>
+    <div class="well well-primary" ng-repeat="rule in currentConfig.transformationRules">
+      <div class="form-group">
+        <label>Rule</label>
+        <textarea ng-model="rule.rule">{{rule.rule}}</textarea>
+      </div>
+      <button class="btn btn-primary" ng-click="saveTransformationRule($index)" ng-hide="rule.id" ng-disabled="!rule.rule">Save Transformation Rule</button>
+      <button class="btn btn-danger" ng-click="removeTransformationRule(rule)">Remove Transformation Rule</button>
+    </div>
+    <button class="btn btn-default" ng-click="addTransformationRule(currentConfig)">Add Transformation Rule</button>
+  </div>
+  <div class="well" ng-show="currentConfig.id">
+    <label>Mapping Rules</label>
+    <div class="well well-primary" ng-repeat="rule in currentConfig.mappingRules">
+      <div class="form-group">
+        <label>fieldName</label>
+        <input class="input form-control" ng-model="currentConfig.mappingRules[$index].fieldName" type="text" placeholder="Field Name"/>
+      </div>
+      <div class="form-group">
+        <label>value</label>
+        <input class="input form-control" ng-model="currentConfig.mappingRules[$index].value" type="text" placeholder="Value"/>
+      </div>
+      <div class="form-group">
+        <label>mappedValue</label>
+        <input class="input form-control" ng-model="currentConfig.mappingRules[$index].mappedValue" type="text" placeholder="Mapped Value"/>
+      </div>
+      <button class="btn btn-primary" ng-click="saveMappingRule($index)" ng-hide="currentConfig.mappingRules[$index].id" ng-disabled="!currentConfig.mappingRules[$index].fieldName||!currentConfig.mappingRules[$index].value||!currentConfig.mappingRules[$index].mappedValue">Save Mapping Rule</button>
+      <button class="btn btn-danger" ng-click="removeMappingRule(currentConfig.mappingRules[$index])">Remove Mapping Rule</button>
+    </div>
+    <button class="btn btn-default" ng-click="addMappingRule(currentConfig)">Add Mapping Rule</button>
+  </div>
+  <div class="row" ng-show="currentConfig.id">
+    <button class="btn btn-danger pull-left" ng-click="deleteWorkflowIntegrationConfig(currentConfig)">Delete</button>
+  </div>
+  <div class="row" ng-show="!currentConfig.id">
+    <button class="btn btn-primary pull-right" ng-click="addWorkflowIntegrationConfig(currentConfig)" ng-disabled="!validateObjectId(currentConfig.workflowId)">Add</button>
+  </div>
+</form>

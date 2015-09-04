@@ -1,0 +1,14 @@
+{
+  "name": "Workflow_Manager",
+  "version": "1.0.0",
+  "description": "Workflow manager module",
+  "main": "EngrafaServiceApp",
+  "author": "flytoj2ee",
+  "contributors": "flytoj2ee",
+  "private": true,
+  "dependencies": {
+  },
+    "scripts": {
+        "prepareJobs": "node test_files/cf_helpers/remove-all.js && node test_files/cf_helpers/create-jobs.js"
+    }
+}

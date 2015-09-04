@@ -1,0 +1,20 @@
+{
+  "name": "Maintenance",
+  "version": "1.0.0",
+  "description": "Stop the instances, remove the logs files, backup database, and then start the instances",
+  "main": "Maintenance",
+  "author": "flytoj2ee",
+  "contributors": "flytoj2ee",
+  "private": true,
+  "dependencies": {
+  },
+    "scripts": {
+        "stopInstances": "node instances.js stopInstances",
+        "stopWorkflow": "node instances.js stopWorkflow",
+        "stopIntegration": "node instances.js stopIntegration",
+        "startInstances": "node instances.js startInstances",
+        "startWorkflow": "node instances.js startWorkflow",
+        "startIntegration": "node instances.js startIntegration",
+        "removeTokens": "node instances.js removeTokens"
+    }
+}

@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+bower_components/
+
+# Generated files
+refresh_token
+access_token
+.idea
+
+# Test files
+middleware_service/test_files/downloads/*.pdf
+integration_manager/reports/execution_results/*.csv
+
+# Live versions of example files
+workflow_manager/config/config.js
+workflow_manager/config/internal-jobs.json
+workflow_manager/config/users.htpasswd
+workflow_manager/test_files/config.js
+workflow_manager/test_files/insert.js
+
+# Logs #
+########
+integration_manager/logs/*.log
+workflow_manager/logs/*.log
+middleware_service/logs/*.log
+document_manager/document_manager/logs/*.log
+maintenance/logs/*.log

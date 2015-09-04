@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Results clientId="5433b9d504ab3d832ebf9c0d" clientName="ClientA">
+    <Classification>
+        <Field name="validstate" value="Yes" confidence="1" jobname="CLASSIFICATION_STATE_BASIC"/>
+        <Field name="state" value="NE edited" confidence="1" jobname="CLASSIFICATION_STATE_BASIC"/>
+        <Field name="newField" value="NE some suffix" confidence="-1" jobname="CLASSIFICATION_STATE_BASIC"/>
+        <Field name="collectorname" value="TERRENCE GAFFY" confidence="1" jobname="CLASSIFICATION_COLLECTOR_BASIC"/>
+        <Field name="state2" value="NE edited" confidence="-1" jobname="CLASSIFICATION_COLLECTOR_BASIC"/>
+    </Classification>
+    <Taxonomy>
+        <Field name="paymentschedule" value="four" confidence="1" jobname="TAXONOMY_PAYMENTS_BASIC"/>
+        <Field name="hasaccountnumber" value="Yes" confidence="1" jobname="TAXONOMY_ACCOUNT_NUMBER_BASIC"/>
+        <Field name="newField" value="NE some suffix - suffix 2" confidence="-1"
+               jobname="TAXONOMY_ACCOUNT_NUMBER_BASIC"/>
+    </Taxonomy>
+    <Extraction>
+        <Field name="hasaccountnumber" value="Yes" confidence="1" jobname="EXTRACTION_ACCOUNT_NUMBER_BASIC"/>
+        <Field name="accountnumber" value="889441" confidence="1" jobname="EXTRACTION_ACCOUNT_NUMBER_BASIC"/>
+    </Extraction>
+</Results>

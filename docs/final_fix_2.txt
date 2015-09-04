@@ -1,0 +1,25 @@
+section 2.4. Set up CrowdFlower jobs and the database
+according to requirement, you should provide a single command to call all these tasks. this is one of the major task.
+-> Fixed. Merged to one command.
+
+You must provide the script to remove the "access_token" and "refresh_token".
+Or it fails all the time. 
+-> Fixed.
+
+
+Perform following command:
+$ npm run startWorkflow
+$ npm run startIntegration
+$ forever list
+Shows that server and worker ¡°uptime¡± is ¡°STOPPED¡±
+-> Provided the command to remove access tokens.
+
+
+All modules must share the same access token and refresh token.
+During running the instances, I found many duplicated files.
+Why don't you use only one access_token and one refresh_token? 
+-> Provided the command to remove access tokens.
+
+
+please provide a jslint check file lint.sh for *nix. 
+-> Added.

@@ -1,0 +1,73 @@
+
+
+<div class="well clearfix">
+
+    <div class="row clearfix">
+
+        <div class="col-md-6">
+            <h3>Status - <span class="capitalize">{{status}}</span></h3>
+            <div class="btn-group btn-group-justified">
+                <a type="button" data-ng-click="startService()" data-ng-disabled="disableStartStop || status == 'running'" class="btn btn-default">Start</a>
+                <a type="button" data-ng-click="stopService()" data-ng-disabled="disableStartStop || status != 'running'" class="btn btn-default">Stop</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 text-right">
+            <h3>Current Balance - {{balance | currency}}</h3>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="well clearfix">
+
+    <h3>Workflow</h3>
+
+    <div data-ng-if="clients.length && !selectedClient">
+        <h5>Select a client</h5>
+        <div class="list-group">
+            <a href="javascript:"
+               data-ng-click="selectClient(client)"
+               class="list-group-item" data-ng-repeat="client in clients">{{client.name}}</a>
+        </div>
+    </div>
+
+    <div data-ng-if="selectedClient && !selectedWorkflow">
+        <h5>Select a workflow</h5>
+        <div class="list-group">
+            <a href="javascript:"
+               data-ng-click="selectWorkflow(workflow)"
+               class="list-group-item"
+               data-ng-repeat="workflow in selectedClient.workflows">{{workflow.name}}</a>
+        </div>
+        <button class="btn btn-default" data-ng-click="showClients()">Back</button>
+    </div>
+    <div data-ng-show="selectedWorkflow">
+        <textarea data-ui-codemirror data-ui-codemirror-opts="editorOptions" data-ng-model="workflow" ui-refresh="refreshEditor"></textarea>
+        <p>
+
+            <button class="btn btn-success" data-ng-click="validate()">Validate</button>
+            <button class="btn btn-default" data-ng-click="save()">Save</button>
+            <button class="btn btn-default" data-ng-click="showWorkflows()">Back</button>
+        </p>
+    </div>
+</div>
+
+
+<div class="well clearfix">
+
+    <div class="row clearfix">
+
+        <div class="col-md-6">
+            <h3>Most Recent Log Entries ({{logSize}})</h3>
+        </div>
+
+        <div class="col-md-6 text-right right-link">
+            <a href="javascript:" data-ng-click="download('/api/settings/log')">Open Log File</a>
+        </div>
+    </div>
+
+    <pre class="log-summary">{{log}}</pre>
+
+</div>

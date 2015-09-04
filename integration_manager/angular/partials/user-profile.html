@@ -1,0 +1,7 @@
+<form role="form" class="col-md-offset-4 col-md-4 well">
+    <div class="form-group">
+        <label>Password</label>
+        <input class="input form-control" ng-model="newPassword" type="password" placeholder="Password"/>
+    </div>
+    <button class="btn btn-default" ng-click="resetPassword()" ng-disabled="newPassword.length === 0">Update Password</button>
+</form>

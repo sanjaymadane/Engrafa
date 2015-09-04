@@ -1,0 +1,18 @@
+
+
+
+<table data-ng-table="tableParams" class="table table-striped">
+    <tbody>
+    <tr data-ng-repeat="job in $data">
+        <td data-title="'Phase'" data-sortable="'phase'" class="capitalize">{{job.phase | lowercase}}</td>
+        <td data-title="'Job ID'" data-sortable="'jobId'"><a href="https://make.crowdflower.com/jobs/{{job.jobId}}" target="_blank">{{job.jobId}}</a></td>
+        <td data-title="'Title'" data-sortable="'title'">{{job.title}}</td>
+        <td data-title="'Units'" data-sortable="'units'" class="text-center">{{job.units}}</td>
+        <td data-title="'Judgements'" data-sortable="'judgements'" class="text-center">{{job.judgements}}</td>
+        <td data-title="'Pending Judgements'" data-sortable="'pendingJudgements'" class="text-center">{{job.pendingJudgements}}</td>
+        <td data-title="'Work URL'" data-sortable="'workUrl'">
+            <a ng-if="job.pendingJudgements > 0" href="{{job.workUrl}}" target="_blank">Work it!</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

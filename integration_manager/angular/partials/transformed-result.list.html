@@ -1,0 +1,137 @@
+<div class="row">
+	<div class="col-md-4">
+		<form class="input-group" novalidate ng-submit="search()">
+			<span class="input-group-addon" id="searchFilter"><span class="glyphicon glyphicon-search"></span></span>
+			<input type="text" ng-model="filter" class="form-control" placeholder="Enter search text here">
+			  <span class="input-group-btn">
+				<button class="btn btn-default" ng-click="search()" type="button">Search</button>
+			  </span>
+		</form>
+	</div>
+	<div class="col-md-4 col-md-offset-4">
+		<div class="pull-right">
+			<button type="button" class="btn btn-default" data-ng-click="resetSortOrder()" data-ng-disabled="!isSortOrderSet()"><span class="glyphicon glyphicon-sort"></span>&nbsp;Reset Column Sort</button>
+		</div>
+	</div>
+</div>
+
+<!-- Dummy Spacing -->
+<div class="row">
+	<div class="col-md-12">
+		&nbsp;
+	</div>
+</div>
+
+<div class="row" ng-if="data.length">
+	<div class="col-md-12">
+		<table class="table table-striped">
+			<thead>
+				<th>&nbsp;<!-- View link --></th>			
+				<th>
+					<a data-ng-click="setOrderBy('documentDate')" href="">
+						Document Date
+						<span class="glyphicon {{getIconClass('documentDate')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('documentType')" href="">
+						Document Type
+						<span class="glyphicon {{getIconClass('documentType')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('accounts')" href="">
+						Accounts
+						<span class="glyphicon {{getIconClass('accounts')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('state')" href="">
+						State
+						<span class="glyphicon {{getIconClass('state')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('jurisdiction')" href="">
+						Jurisdiction
+						<span class="glyphicon {{getIconClass('jurisdiction')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('propertyType')" href="">
+						Property Type
+						<span class="glyphicon {{getIconClass('propertyType')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('dueData')" href="">
+						Due Date
+						<span class="glyphicon {{getIconClass('dueData')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('errorMessage')" href="">
+						Error Message
+						<span class="glyphicon {{getIconClass('errorMessage')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('reviewStatus')" href="">
+						Review Status
+						<span class="glyphicon {{getIconClass('reviewStatus')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('assignedStatus')" href="">
+						Owner
+						<span class="glyphicon {{getIconClass('assignedStatus')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+				<th>
+					<a data-ng-click="setOrderBy('taxPayerName')" href="">
+						Tax Payer Name
+						<span class="glyphicon {{getIconClass('taxPayerName')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+
+				<th>
+					<a data-ng-click="setOrderBy('notes')" href="">
+						Notes
+						<span class="glyphicon {{getIconClass('notes')}}" aria-hidden="true"></span>
+					</a>
+				</th>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="row in data">
+					<td>
+					  <a href="" data-ng-click="openResultDetails(row.id)">View</a>
+					</td>
+					<td>{{row.documentDate}}</td>
+					<td>{{row.documentType}}</td>
+					<td title="{{row.accounts.length <= 40 ? '' : row.accounts}}">{{row.accounts | ellipsis:40}}</td>
+					<td>{{row.state}}</td>
+					<td>{{row.jurisdiction}}</td>
+					<td>{{row.propertyType}}</td>
+					<td>{{row.dueData}}</td>
+					<td>{{row.errorMessage}}</td>
+					<td>{{row.reviewStatus}}</td>
+					<td data-ng-bind="getUserName(row.assignedStatus)"></td>
+					<td>{{row.taxPayerName}}</td>
+					<td>{{row.notes}}</td>				
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<pagination total-items="total" 
+			ng-if="data.length"
+			ng-model="page.value" 
+			max-size="10" 
+			ng-change="pageChange()"
+			class="pagination-sm" boundary-links="true" rotate="false" items-per-page="25"></pagination>
+		
+<div class="row" ng-if="loaded && data.length === 0">
+	<div class="col-md-12">
+			No results
+	</div>
+</div>

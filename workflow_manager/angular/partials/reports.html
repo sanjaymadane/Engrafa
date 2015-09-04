@@ -1,0 +1,20 @@
+
+<div class="row clearfix">
+    <div class="col-md-6">
+        <h3>Work Unit Summary</h3>
+    </div>
+    <div class="col-md-6 text-right right-link">
+        <a href="javascript:" data-ng-click="download('/api/reports/work-units.csv')">Download Report</a>
+    </div>
+</div>
+
+<table data-ng-table="workUnitsParams" class="table table-striped">
+    <tbody>
+    <tr data-ng-repeat="item in $data">
+        <td data-title="'Phase'" class="text-center capitalize">{{item.phase | lowercase}}</td>
+        <td data-title="'Documents in Progress'" class="text-center">{{item.inProgress}}</td>
+        <td data-title="'Documents Completed'" class="text-center">{{item.completed}}</td>
+    </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,14 @@
+<div class="row-fluid">
+
+  <p><a target="_blank" href="{{url}}" id="" class="btn btn-primary">Click here to view the File</a></p>
+
+</div>
+
+<div class="row-fluid">
+
+  <cml:radios label="Does the document have an Account Number?" name="hasaccountnumber" instructions="Click the link to access the PDF." validates="required" aggregation="agg" gold="true">
+    <cml:radio label="Yes" value="Yes"></cml:radio>
+    <cml:radio label="No" value="No"></cml:radio>
+  </cml:radios>
+
+</div>

@@ -1,0 +1,22 @@
+1. Fixed. Please check log files in maintenance directory.
+
+
+2. Removed.
+
+
+3. Fixed.
+
+
+4. Fixed.
+
+
+
+5. Fixed.
+
+
+6. Fixed.
+Insert the test data based on the DG section 3.
+Please update based on the Section 2.4 to test the workflow_manager server.js.
+
+
+7. Added in DG section 4.

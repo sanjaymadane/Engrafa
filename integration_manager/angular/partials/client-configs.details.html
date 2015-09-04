@@ -1,0 +1,39 @@
+<form role="form" class="col-md-offset-2 col-md-8 well">
+  <div class="form-group" ng-show="currentConfig.id">
+    <label>Id</label>
+    <input class="input form-control" ng-model="currentConfig.id" type="text" disabled/>
+  </div>
+  <div class="form-group">
+    <label>Client Id</label>
+    <input class="input form-control" ng-model="currentConfig.clientId" type="text" placeholder="Client Id"/>
+  </div>
+  <div class="form-group">
+    <label>Authentication Key</label>
+    <input class="input form-control" ng-model="currentConfig.authenticationKey" type="text" placeholder="Authentication Key"/>
+  </div>
+  <div class="well">
+    <label>Web Hooks</label>
+    <div class="well well-primary" ng-repeat="hook in currentConfig.webhooks">
+      <div class="form-group">
+        <label>Type</label>
+        <select ng-model="hook.type">
+          <option value="result_ready_for_import">result_ready_for_import</option>
+          <option value="result_import_failed">result_import_failed</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>URL</label>
+        <input class="input form-control" ng-model="hook.url" type="text" placeholder="URL"/>
+      </div>
+      <button class="btn btn-default" ng-click="removeWebHook($index)">Remove Web Hook</button>
+    </div>
+    <button class="btn btn-default" ng-click="addWebHook(currentConfig)">Add Web Hook</button>
+  </div>
+  <div class="row" ng-show="currentConfig.id">
+    <button class="btn btn-danger pull-left" ng-click="deleteConfig(currentConfig)">Delete</button>
+    <button class="btn btn-primary pull-right" ng-click="updateConfig(currentConfig)" ng-disabled="!currentConfig.clientId||!currentConfig.authenticationKey">Update</button>
+  </div>
+  <div class="row" ng-show="!currentConfig.id">
+    <button class="btn btn-primary pull-right" ng-click="addConfig(currentConfig)" ng-disabled="!currentConfig.clientId||!currentConfig.authenticationKey">Add</button>
+  </div>
+</form>

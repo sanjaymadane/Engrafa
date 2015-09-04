@@ -1,0 +1,133 @@
+<div ng-show="transformedResult && !isTaxonomyOpen" class="row">
+    <div class="well col-md-5">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-4 transform-field">WU Start Time</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" value="{{getFormattedDate(transformedResult.workUnitStartTime)}}" disabled>
+                </div>
+            </div>
+
+            <div class="form-group" ng-repeat="field in transformedResult.fields track by $index">
+                <label class="col-sm-4 transform-field"> {{field.displayField.displayValue}}</label>
+                <div class="col-sm-7" ng-hide="field.displayField.pipeDelimitedList || field.displayField.isDropdown || field.displayField.name == 'Notes'">
+                    <input ng-model="field.value" class="input form-control" ng-readonly="field.displayField.readOnly || disableEdit()" ng-class="{'has-error' : field.displayField.hasError}" />
+                </div>
+                <div class="col-sm-7 " ng-show="field.displayField.pipeDelimitedList">
+                    <div ng-repeat="pipeValue in field.value track by $index">
+                        <input ng-model="field.value[$index]" class="input form-control" ng-readonly="field.displayField.readOnly || disableEdit()" ng-class="{'pipe-textbox':$index != 0,'has-error' : field.displayField.hasError}" />
+                        <span class="glyphicon glyphicon-remove-sign glyphicon-white plus-icon" ng-click="field.value.splice($index,1)" ng-show="$index != 0" rel="tooltip" title="Remove"></span>
+                    </div>
+                </div>
+                <div class="col-sm-7" ng-show="field.displayField.isDropdown && field.displayField.name == 'DocumentType'">
+                    <select ng-model="field.value" class="input form-control" ng-change="updateField('documenttype', field.value, true)" data-ng-disabled="disableEdit()" data-ng-options="v.value as v.text for v in field.displayField.values">
+                        <option value="">Select a Document Type</option>
+                    </select>
+                </div>
+                <div class="col-sm-7" ng-show="field.displayField.isDropdown && field.displayField.name == 'ReviewStatus'">
+                    <select ng-model="transformedResult.reviewStatus" class="input form-control" ng-change="updateField('reviewstatus', transformedResult.reviewStatus)" data-ng-disabled="disableEdit()">
+                        <option value="Not Reviewed">Not Reviewed</option>
+                        <option value="System Update">System Update</option>
+                        <option value="Manual Import">Manual Import</option>
+                        <option value="Research">Research</option>
+                        <option value="Support Review">Support Review</option>
+                    </select>
+                </div>
+                <div class="col-sm-7" ng-show="field.displayField.isDropdown && field.displayField.name == 'AssignedStatus'">
+                    <select ng-model="transformedResult.assignedStatus" class="input form-control" data-ng-options="u.id as u.username for u in users" data-ng-change="updateField('assignedstatus', transformedResult.assignedStatus)" data-ng-disabled="disableEdit()">
+                        <option value="">Not Assigned</option>
+                    </select>
+                </div>  
+                <div class="col-sm-7" ng-show="field.displayField.name == 'Notes'">
+                    <textarea ng-model="transformedResult.notes" class="input form-control" ng-readonly="field.displayField.readOnly || disableEdit()" ng-class="{'has-error' : field.displayField.hasError}" ng-model-options="{ updateOn: 'blur' }"
+             ng-keyup="cancel($event)" ng-blur="updateField('notes', transformedResult.notes)"/>
+                </div>               
+                <div class="pull-left">
+                    <span class="glyphicon glyphicon-plus plus-icon" ng-click="field.value.push('')" ng-show="field.displayField.pipeDelimitedList && field.value.length < field.displayField.pipeLimit && !disableEdit()" rel="tooltip" title="Add"></span>
+                    <span ng-show="field.displayField.isMandatory" class="mandatory-field" rel="tooltip" title="Please enter field value."> * </span>
+                </div>
+            </div>
+            
+            <div class="pull-right">
+            <span class="mandatory-field" > * </span> <span>Required</span>
+            </div>
+            <br> <br>
+            
+            <a class="btn btn-primary" ng-show="previousResult()" href="" data-ng-click="previousResult(true)">Previous</a>
+            <a class="btn btn-primary" ng-show="nextResult()" href="" data-ng-click="nextResult(true)">Next</a>
+            <div class="pull-right">
+                <button class="btn btn-primary" ng-click="rejectTransformedResult()" data-ng-disabled="disableActions()">Reject</button>
+                <button class="btn btn-primary" ng-click="updateTransformedResult(true)" data-ng-disabled="disableActions()">Update</button>
+            </div>
+        </div>
+    </div>
+    <!-- Show Error Message -->
+    <div class="col-md-6 error-container" ng-if="transformedResult.status =='import_failed'">
+        <div class="row panel panel-danger error-container">
+            <div class="panel-heading panel-heading-center">
+                <h3 class="panel-title">Errors</h3>
+            </div>
+            <div class="panel-body">
+                <p ng-if="transformedResult.errorMessage">{{transformedResult.errorMessage}}</p>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="field in transformedResult.fields track by $index" ng-if="field.importFailed">
+                    <span>Field Name: {{field.name}}</span>
+                    <br>
+                    <span>Error Message: {{field.errorMessage}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-6">
+                <a ng-href="{{embededURL(transformedResult.url)}}" target="_blank" class="box-new-window"> View Document in New Window </a>
+            </div>
+            <div class="col-md-6">
+                <a ng-click="getWorkUnit()" href="" anchor-disabled="setDisabledForEditTaxonomy()" target="_blank" class="box-new-window pull-right"> Edit Taxonomy </a>
+            </div>
+        </div>
+        <iframe ng-src="{{embededURL(transformedResult.url)}}" width="100%" height="800" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!-- Edit Taxonomy -->
+<div ng-show="transformedResult && isTaxonomyOpen && workUnitResult" class="row">
+    <div class="well col-md-5">
+        <div class="form-horizontal">
+            <div class="form-group" ng-repeat="field in workUnitResult.taxonomyResultsFields track by $index">
+                <div ng-hide="field.displayField.isRadio">
+                    <label class="col-sm-4 transform-field"> {{field.displayField.displayValue}}</label>
+                    <div class="col-sm-7">
+                        <input ng-model="field.value" class="input form-control" ng-readonly="field.displayField.readOnly" />
+                    </div>
+                </div>
+                <div ng-show="field.displayField.isRadio">
+                    <!-- For Radio -->
+                    <label class="col-sm-5 transform-field"> {{field.displayField.displayValue}}</label>
+                    <div ng-repeat="radioValue in field.displayField.values" ng-class="{'radios-margin':$index > 1}" ng-init="$parent.field.value = $parent.field.value.toLowerCase()">
+                        <input type="radio" ng-model="$parent.field.value" ng-value="radioValue.value" /> {{radioValue.text}}
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                <!-- update Work Unit -->
+                <button class="btn btn-primary" ng-click="updateWorkUnit()">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        
+         <div class="row">
+            <div class="col-md-6">
+                <a ng-href="{{embededURL(transformedResult.url)}}" target="_blank" class="box-new-window"> View Document in New Window </a>
+            </div>
+            <div class="col-md-6">
+                <a ng-click="isTaxonomyOpen=false" href="" class="box-new-window pull-right"> Back </a>
+            </div>
+        </div>
+        <iframe ng-src="{{embededURL(transformedResult.url)}}" width="100%" height="800" allowfullscreen></iframe>
+    </div>
+</div>

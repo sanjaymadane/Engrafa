@@ -1,0 +1,9 @@
+<div class="row-fluid">
+  <p><a target="_blank" href="{{url}}" id="" class="btn btn-primary">Click here to view the File</a></p>
+</div>
+
+<div class="row-fluid">
+
+  <cml:text label="Enter the name of the Collector." instructions="Do not enter the word collector" default="Enter Collector here." name="collectorname" validates="required clean:['uppercase','multipleWhitespace','trim']" aggregation="agg" gold="true"></cml:text>
+
+</div>

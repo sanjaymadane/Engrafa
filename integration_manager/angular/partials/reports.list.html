@@ -1,0 +1,62 @@
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <th>
+                <a data-ng-click="setOrderBy('name')" href="">
+                    Name
+                    <span class="glyphicon {{getIconClass('name')}}" aria-hidden="true"></span>
+                </a>
+            </th>
+            <th>
+                <a data-ng-click="setOrderBy('status')" href="">
+                    Status
+                    <span class="glyphicon {{getIconClass('status')}}" aria-hidden="true"></span>
+                </a>
+            </th>
+            <th class="text-center">
+                <a data-ng-click="setOrderBy('status')" href="">
+                    Actions
+                    <span class="glyphicon {{getIconClass('status')}}" aria-hidden="true"></span>
+                </a>
+            </th>
+            <th>
+                <a data-ng-click="setOrderBy('lastExecuted')" href="">
+                    Last Executed
+                </a>
+            </th>
+            <th>&nbsp;<!-- Cancel --></th>
+            <th>&nbsp;<!-- Download Results --></th>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="row in reports | filter:filter | orderBy:orderBy">
+            <td>{{row.name}} <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="top" title="{{row.description}}" data-ng-show="row.description.length > 1" bootstrap-tooltip></span></td>
+                <td ng-switch="row.status">
+                    <div ng-switch-when="UNEXECUTED"></div>
+                    <div class="text-report-danger" ng-switch-when="FAILED">Failed</div>
+                    <div class="text-report-danger" ng-switch-when="EXECUTING">Executing...</div>
+                    <div class="text-report-success" ng-switch-when="COMPLETED">Completed</div>
+                </td>
+                <td class="text-center">
+                    <a href="" data-ng-show="row.status === 'UNEXECUTED' || row.status === 'COMPLETED' || row.status === 'FAILED'" ng-click="executeReport(row.fileName)">Execute</a>
+                    <span data-ng-show="row.status === 'UNEXECUTED' || row.status === 'COMPLETED' || row.status === 'FAILED'"> / </span>
+                    <a href="" data-ng-href="/reports/{{row.id}}">Edit</a>
+                </td>
+                <td>
+                    <div ng-show="row.status === 'EXECUTING'">
+                        <a href="" ng-click="cancelReport(row.fileName)">Cancel</a>
+                    </div>
+                </td>
+                <td>
+                    <span data-ng-bind="row.lastExecuted | date: 'short'" data-ng-show="row.lastExecuted"></span>
+                </td>
+                <td>
+                    <div ng-show="row.status === 'COMPLETED'">
+                        <form method="get" action="{{getURL(row.fileName)}}">
+                            <button class="btn btn-link" type="submit">Download Results</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

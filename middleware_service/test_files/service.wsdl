@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<wsdl:definitions name="DocumentIntegration"
+                  targetNamespace="http://example.com/DocumentIntegration.wsdl"
+                  xmlns:tns="http://tempuri.org/"
+                  xmlns:xsd1="http://example.com/DocumentIntegration.xsd"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <!--not use full definition here-->
+        <xs:schema targetNamespace="http://example.com/DocumentIntegration.xsd" xmlns:xsd="http://www.w3.org/2000/10/XMLSchema">
+            <xs:element name="SubmitDocument">
+            </xs:element>
+            <xs:element name="SubmitDocumentResult">
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="SubmitDocumentInput">
+        <wsdl:part name="body" element="xsd1:SubmitDocument"/>
+    </wsdl:message>
+
+    <wsdl:message name="SubmitDocumentOutput">
+        <wsdl:part name="body" element="xsd1:SubmitDocumentResult"/>
+    </wsdl:message>
+
+    <wsdl:portType name="DocumentIntegrationPortType">
+        <wsdl:operation name="SubmitDocument">
+            <wsdl:input message="tns:SubmitDocumentInput"/>
+            <wsdl:output message="tns:SubmitDocumentOutput"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="DocumentIntegrationSoapBinding" type="tns:DocumentIntegrationPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="SubmitDocument">
+            <soap:operation style="document" soapAction="http://tempuri.org/IDocumentIntegration/SubmitDocument"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="DocumentIntegrationService">
+        <wsdl:port name="DocumentIntegrationPort" binding="tns:DocumentIntegrationSoapBinding">
+            <soap:address location="http://localhost:5050/DocumentIntegration"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

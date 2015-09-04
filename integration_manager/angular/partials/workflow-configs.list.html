@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="row">
+		<a class="btn btn-default col-md-offset-4 col-md-4" href="/workflowconfigs/new">Add Workflow Config</a>
+	</div>
+	<div class="row">
+		<table class="table table-striped">
+			<thead>
+				<th>Id</th>
+				<th>Workflow Id</th>
+				<th>Mapping Rules</th>
+				<th>Transformation Rules</th>
+			</thead>
+		    <tbody>
+			    <tr data-ng-repeat="config in configs">
+			        <td>
+			        	<a href="/workflowconfigs/{{config.id}}">{{config.id}}</a>
+			        </td>
+			        <td>{{config.workflowId}}</td>
+			        <td>
+			        	{{config.mappingRules.length}}
+			        </td>
+			        <td>
+			        	{{config.transformationRules.length}}
+			        </td>
+			    </tr>
+		    </tbody>
+		</table>
+	</div>
+</div>

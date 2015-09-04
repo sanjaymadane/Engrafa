@@ -1,0 +1,106 @@
+
+<h3>Search documents</h3>
+
+
+<div class="well search-doc">
+    <textarea data-ui-codemirror data-ui-codemirror-opts="editorOptions" data-ng-model="query"></textarea>
+</div>
+
+<button class="btn btn-success" data-ng-click="search()" data-ng-disabled="disableSearch">Search</button>
+<button class="btn btn-danger" data-ng-click="query = '{\n\n\n\n\n}'">Clear</button>
+
+<hr/>
+
+<div data-ng-show="items.length && !selectedItem">
+    <h3>{{items.length}} Result(s)</h3>
+
+    <div class="list-group">
+        <a href="javascript:" data-ng-click="showDetails(item)" class="list-group-item" data-ng-repeat="item in items">{{item._id}} - {{item.processingPhase}}</a>
+    </div>
+</div>
+
+
+<div data-ng-if="selectedItem">
+    <button class="btn btn-default" data-ng-click="back()">Back</button>
+
+    <div class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-sm-2 control-label text-left">Url</label>
+            <div class="col-sm-10">
+                <p class="form-control-static"><a href="{{selectedItem.url}}">{{selectedItem.url}}</a> </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label text-left">Phase</label>
+            <div class="col-sm-10">
+                <p class="form-control-static capitalize">{{selectedItem.processingPhase | lowercase}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label text-left">Status</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{selectedItem.isDone ? "Completed" : "In Progress" }}</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label text-left">Evaluation context</label>
+            <div class="col-sm-10">
+                <table class="table">
+                    <tbody>
+                        <tr data-ng-repeat="prop in selectedItem.contextKeys" class="evaluation-context-item">
+                            <td class="col-sm-1">{{prop}}</td>
+                            <td>
+                                <div data-ng-if="!selectedItem.editing[prop]">
+                                    {{selectedItem.evaluationContext[prop]}}
+                                    <a href="javascript:" class="edit-button" data-ng-click="editProp(prop)"><span class="glyphicon glyphicon-edit"></span></a>
+                                </div>
+                                <div data-ng-if="selectedItem.editing[prop]">
+                                    <div class="input-group evaluation-context-edit input-group-sm">
+                                        <input type="text" class="form-control col-sm-3" data-ng-model="selectedItem.evaluationContext[prop]" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" data-ng-click="confirmEditProp(prop)">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </button>
+                                            <button class="btn btn-danger" data-ng-click="revertEditProp(prop)">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group" data-ng-show="selectedItem.isDone">
+            <label class="col-sm-2 control-label text-left" for="xmlEditor">
+                Result XML
+                <a href="javascript:"  ng-click="editXml()"><span class="glyphicon glyphicon-edit"></span></a>
+            </label>
+            <div class="col-sm-10">
+                <div data-ng-if="!selectedItem.editingXML" class="form-control-static">
+                    <pre>{{selectedItem.resultXML}}</pre>
+                </div>
+                <div data-ng-if="selectedItem.editingXML" class="edit-xml">
+                    <textarea id="xmlEditor" data-ui-codemirror data-ui-codemirror-opts="xmlEditorOptions" data-ng-model="selectedItem.resultXML"></textarea>
+
+                    <button class="btn btn-success" data-ng-click="applyEditXml()">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                    <button class="btn btn-danger"  data-ng-click="revertEditXml()">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+    <div>
+        <button class="btn btn-success center-block" data-ng-click="saveChanges()"
+                data-ng-disabled="(!selectedItem.xmlChanged && !selectedItem.contextChanged) || blockSave">Save document</button>
+    </div>
+</div>

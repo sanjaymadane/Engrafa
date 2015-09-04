@@ -1,0 +1,27 @@
+
+[
+    {
+        "phase" : "CLASSIFICATION",
+        "jobId" : 669275
+    },
+    {
+        "phase" : "CLASSIFICATION",
+        "jobId" : 669273
+    },
+    {
+        "phase" : "TAXONOMY",
+        "jobId" : 669271
+    },
+    {
+        "phase" : "TAXONOMY",
+        "jobId" : 669270
+    },
+    {
+        "phase" : "EXTRACTION",
+        "jobId" : 669272
+    },
+    {
+        "phase" : "EXTRACTION",
+        "jobId" : 669274
+    }
+]

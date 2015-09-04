@@ -1,0 +1,202 @@
+<div class="row-fluid" xmlns:cml="http://www.w3.org/1999/XSL/Transform">
+    <p><a target="_blank" href="{{url}}" id="" class="btn btn-primary">Click here to view the File</a></p>
+</div>
+
+<h2> REVIEW </h2>
+
+<div class="row-fluid">
+    <div class="span6">
+
+        <cml:radios label="Can you determine the State?" name="classification__validstate" instructions="Click the link to access the PDF."  aggregation="agg" gold="true">
+            <cml:radio label="Yes" value="Yes"></cml:radio>
+            <cml:radio label="No" value="No"></cml:radio>
+        </cml:radios>
+
+    </div>
+    <div class="span6">
+
+        <cml:select label="Enter the State:" instructions="Choose the State where the tax bill originated" default="Enter State here" name="classification__state" aggregation="agg" gold="true" only-if="classification__validstate:[0]">
+            <cml:option label="Alabama - AL" value="AL"></cml:option>
+            <cml:option label="Alaska - AK" value="AK"></cml:option>
+            <cml:option label="Arizona - AZ" value="AZ"></cml:option>
+            <cml:option label="Arkansas - AR" value="AR"></cml:option>
+            <cml:option label="California - CA" value="CA"></cml:option>
+            <cml:option label="Colorado - CO" value="CO"></cml:option>
+            <cml:option label="Connecticut - CT" value="CT"></cml:option>
+            <cml:option label="Delaware - DE" value="DE"></cml:option>
+            <cml:option label="District of Columbia - DC" value="DC"></cml:option>
+            <cml:option label="Florida - FL" value="FL"></cml:option>
+            <cml:option label="Georgia - GA" value="GA"></cml:option>
+            <cml:option label="Hawaii - HI" value="HI"></cml:option>
+            <cml:option label="Idaho - ID" value="ID"></cml:option>
+            <cml:option label="Illinois - IL" value="IL"></cml:option>
+            <cml:option label="Indiana - IN" value="IN"></cml:option>
+            <cml:option label="Iowa - IA" value="IA"></cml:option>
+            <cml:option label="Kansas - KS" value="KS"></cml:option>
+            <cml:option label="Kentucky - KY" value="KY"></cml:option>
+            <cml:option label="Louisiana - LA" value="LA"></cml:option>
+            <cml:option label="Maine - ME" value="ME"></cml:option>
+            <cml:option label="Maryland - MD" value="MD"></cml:option>
+            <cml:option label="Massachusetts - MA" value="MA"></cml:option>
+            <cml:option label="Michigan - MI" value="MI"></cml:option>
+            <cml:option label="Minnesota - MN" value="MN"></cml:option>
+            <cml:option label="Mississippi - MS" value="MS"></cml:option>
+            <cml:option label="Missouri - MO" value="MO"></cml:option>
+            <cml:option label="Montana - MT" value="MT"></cml:option>
+            <cml:option label="Nebraska - NE" value="NE"></cml:option>
+            <cml:option label="Nevada - NV" value="NV"></cml:option>
+            <cml:option label="New Hampshire - NH" value="NH"></cml:option>
+            <cml:option label="New Jersey - NJ" value="NJ"></cml:option>
+            <cml:option label="New Mexico - NM" value="NM"></cml:option>
+            <cml:option label="New York - NY" value="NY"></cml:option>
+            <cml:option label="North Carolina - NC" value="NC"></cml:option>
+            <cml:option label="North Dakota - ND" value="ND"></cml:option>
+            <cml:option label="Ohio - OH" value="OH"></cml:option>
+            <cml:option label="Oklahoma - OK" value="OK"></cml:option>
+            <cml:option label="Oregon - OR" value="OR"></cml:option>
+            <cml:option label="Pennsylvania - PA" value="PA"></cml:option>
+            <cml:option label="Rhode Island - RI" value="RI"></cml:option>
+            <cml:option label="South Carolina - SC" value="SC"></cml:option>
+            <cml:option label="South Dakota - SD" value="SD"></cml:option>
+            <cml:option label="Tennessee - TN" value="TN"></cml:option>
+            <cml:option label="Texas - TX" value="TX"></cml:option>
+            <cml:option label="Utah - UT" value="UT"></cml:option>
+            <cml:option label="Vermont - VT" value="VT"></cml:option>
+            <cml:option label="Virginia - VA" value="VA"></cml:option>
+            <cml:option label="Washington - WA" value="WA"></cml:option>
+            <cml:option label="West Virginia - WV" value="WV"></cml:option>
+            <cml:option label="Wisconsin - WI" value="WI"></cml:option>
+            <cml:option label="Wyoming - WY" value="WY"></cml:option>
+        </cml:select>
+
+    </div>
+</div>
+
+
+<div class="row-fluid">
+
+    <cml:text label="Enter the name of the Collector." instructions="Do not enter the word collector" default="Enter Collector here." name="classification__collectorname" validates="clean:['uppercase','multipleWhitespace','trim']" aggregation="agg" gold="true"></cml:text>
+
+</div>
+
+<h2> TAXONOMY </h2>
+
+<div class="row-fluid">
+
+    <div class="span6">
+
+        <cml:radios label="Can you find the Account Number?" name="taxonomy__hasaccountnumber" instructions="Click the link to access the PDF." aggregation="agg" gold="true">
+            <cml:radio label="Yes" value="Yes"></cml:radio>
+            <cml:radio label="No, it contains multiple." value="Multiple"></cml:radio>
+            <cml:radio label="No, I can't find one." value="No"></cml:radio>
+        </cml:radios>
+
+    </div>
+</div>
+
+
+<div class="row-fluid">
+
+  <cml:radios label="What type of payment schedule does the Tax Collector use for the full tax year?" name="taxonomy__paymentschedule" instructions="Click the link to access the PDF."  aggregation="agg" gold="true">
+    <cml:radio label="One Payment" value="one"></cml:radio>
+    <cml:radio label="Two Payments" value="two"></cml:radio>
+    <cml:radio label="Three Payments" value="three"></cml:radio>
+    <cml:radio label="Four Payments" value="four"></cml:radio>
+    <cml:radio label="I can't tell" value="unknown"></cml:radio>
+  </cml:radios>
+
+
+</div>
+
+
+<h2> EXTRACTION </h2>
+
+
+<div class="row-fluid">
+    <div class="span6">
+
+        <cml:radios label="Does the document have an Account Number?" name="extraction__hasaccountnumber" instructions="Click the link to access the PDF." aggregation="agg" gold="true">
+            <cml:radio label="Yes" value="Yes"></cml:radio>
+            <cml:radio label="No" value="No"></cml:radio>
+        </cml:radios>
+
+    </div>
+
+
+    <div class="span6">
+
+        <cml:text label="Enter the Account Number." instructions="Enter only the actual Account Number" default="Enter Account Number here." name="extraction__accountnumber" validates=" clean:['uppercase','whitespace']" aggregation="agg" gold="true" only-if="extraction__hasaccountnumber:[0]"></cml:text>
+
+
+    </div>
+
+</div>
+
+<div class="row-fluid">
+  <div class="span6">
+
+    <cml:radios label="Can you find the Full Payment Amount and Due Date?" name="extraction__hasgrossamountdue" instructions="Click the link to access the PDF." aggregation="agg" gold="true">
+      <cml:radio label="Yes" value="Yes"></cml:radio>
+      <cml:radio label="No" value="No"></cml:radio>
+    </cml:radios>
+
+  </div>
+
+  <div class="span6">
+
+    <cml:text label="Enter the Full Payment Amount." instructions="Enter the Full Year Tax Amount Due including dollars and cents. e.g.: 100.00" default="Enter Full Year Tax Amount Due here." name="extraction__grossamountdue" validates=" numeric regex" data-validates-regex="^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*\.[0-9]{2}$" aggregation="agg" gold="true" only-if="extraction__hasgrossamountdue:[0]"></cml:text>
+    <br />
+    <cml:text label="Enter the Full Payment Due Date." instructions="Enter the Full Payment Due Date in MM/DD/YYYY format. e.g.: 03/01/2014" default="Enter Full Pamynet Due Date here." name="extraction__grossamountdueduedate" validates=" date" aggregation="agg" gold="true" only-if="extraction__hasgrossamountdue:[0]"></cml:text>
+
+
+  </div>
+
+</div>
+
+
+<h2> COMMANDS </h2>
+
+<div class="row-fluid">
+    <div class="span6">
+
+        <cml:radios label="Replace Taxonomy?" name="cmd__replacetaxonomy" instructions="Click the link to access the PDF." validates="required" aggregation="agg" gold="true">
+            <cml:radio label="Yes" value="true"></cml:radio>
+            <cml:radio label="No" value="false"></cml:radio>
+        </cml:radios>
+
+    </div>
+</div>
+
+
+<div class="row-fluid">
+    <div class="span6">
+
+        <cml:radios label="Replace Classification?" name="cmd__replaceclassification" instructions="Click the link to access the PDF." validates="required" aggregation="agg" gold="true">
+            <cml:radio label="Yes" value="true"></cml:radio>
+            <cml:radio label="No" value="false"></cml:radio>
+        </cml:radios>
+
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+
+        <cml:radios label="Replace Extraction?" name="cmd__replaceextraction" instructions="Click the link to access the PDF." validates="required" aggregation="agg" gold="true">
+            <cml:radio label="Yes" value="true"></cml:radio>
+            <cml:radio label="No" value="false"></cml:radio>
+        </cml:radios>
+
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+
+        <cml:radios label="Use as Taxonomy?" name="cmd__useastaxonomy" instructions="Click the link to access the PDF." validates="required" aggregation="agg" gold="true">
+            <cml:radio label="Yes" value="true"></cml:radio>
+            <cml:radio label="No" value="false"></cml:radio>
+        </cml:radios>
+
+    </div>
+</div>

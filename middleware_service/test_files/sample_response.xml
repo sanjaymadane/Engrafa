@@ -1,0 +1,9 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><SubmitDocumentResponse xmlns="http://tempuri.org/"><SubmitDocumentResult>&lt;?xml version="1.0" encoding="utf-16"?&gt;&#xD;
+&lt;ACK xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&#xD;
+  &lt;TransactionID&gt;12ed2709-6a0d-4d79-8be0-a779f1658ba6&lt;/TransactionID&gt;&#xD;
+  &lt;WorkflowName&gt;COMCAST&lt;/WorkflowName&gt;&#xD;
+  &lt;DocumentID&gt;21668636565&lt;/DocumentID&gt;&#xD;
+  &lt;Status&gt;51500&lt;/Status&gt;&#xD;
+  &lt;StatusMessage&gt;Collector not found.&lt;/StatusMessage&gt;&#xD;
+  &lt;Timestamp&gt;2014-12-09T01:41:52.5027147Z&lt;/Timestamp&gt;&#xD;
+&lt;/ACK&gt;</SubmitDocumentResult></SubmitDocumentResponse></s:Body></s:Envelope>

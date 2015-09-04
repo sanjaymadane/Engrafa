@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ACK">
+        <xs:complexType>
+            <xs:all minOccurs="1" maxOccurs="1">
+                <xs:element name="TransactionID" type="xs:string" />
+                <xs:element name="WorkflowName">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1" />
+                            <xs:maxLength value="10" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+              <xs:element name="DocumentID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                      <xs:minLength value="1" />
+                      <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Status" type="xs:unsignedInt" />
+                <xs:element name="StatusMessage" type="xs:string" />
+                <xs:element name="Timestamp" type="xs:dateTime" />
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,906 @@
+{
+  "TAXBILL" :{
+    "fields" : [{
+      "name" : "DocumentType",
+      "displayValue" : "Document Type",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true,
+      "isDropdown": true,
+      "values": [{"value":"RETURN", "text": "Returns"},{"value":"ASSESSMENT", "text": "Assessment Notices"}, {"value": "TAXBILL", "text": "Taxbills"}]
+    },
+    {
+      "name" : "DocumentID",
+      "displayValue" : "Document ID",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    },
+    {
+      "name" : "DocumentName",
+      "displayValue" : "Document Name",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    },
+     {
+      "name" : "State",
+      "displayValue" : "State",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true
+    },
+     {
+      "name" : "CollectorName",
+      "displayValue" : "Collector",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true
+    },
+    {
+      "name" : "TaxYear",
+      "displayValue" : "Tax Year",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true
+    },
+    {
+      "name" : "accounts",
+      "displayValue" : "Account IDs",
+      "pipeDelimitedList":true,
+      "pipeLimit":10,
+      "readOnly":false,
+      "isMandatory":true
+    },
+    {
+      "name" : "PropertyType",
+      "displayValue" : "Property Type",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+    {
+      "name" : "GrossAmountDue",
+      "displayValue" : "Gross Amount",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true
+    },
+    {
+      "name" : "GrossAmountDueDate",
+      "displayValue" : "Gross Due Date",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true,
+      "DateFormat":"MM/DD/YYYY"
+    },
+    {
+      "name" : "Installments",
+      "displayValue" : "Installment 1 Amount (or Discount Amount)",
+      "pipeDelimitedList":false,
+      "number":0,
+      "readOnly":false,
+      "isMandatory":true
+
+    },
+    {
+      "name" : "InstallmentDueDates",
+      "displayValue" : "Installment 1 Date (or Discount Due Date)",
+      "pipeDelimitedList":false,
+      "number":0,
+      "readOnly":false,
+      "isMandatory":true,
+      "DateFormat":"MM/DD/YYYY"
+    },
+     {
+      "name" : "Installments",
+      "displayValue" : "Installment 2 Amount",
+      "pipeDelimitedList":false,
+      "number":1,
+      "readOnly":false,
+      "isMandatory":false
+    },
+    {
+      "name" : "InstallmentDueDates",
+      "displayValue" : "Installment 2 Date",
+      "pipeDelimitedList":false,
+      "number":1,
+      "readOnly":false,
+      "isMandatory":false,
+      "DateFormat":"MM/DD/YYYY"
+    },
+     {
+      "name" : "Installments",
+      "displayValue" : "Installment 3 Amount",
+      "pipeDelimitedList":false,
+      "number":2,
+      "readOnly":false,
+      "isMandatory":false
+    },
+    {
+      "name" : "InstallmentDueDates",
+      "displayValue" : "Installment 3 Date",
+      "pipeDelimitedList":false,
+      "number":2,
+      "readOnly":false,
+      "isMandatory":false,
+      "DateFormat":"MM/DD/YYYY"
+    },
+     {
+      "name" : "Installments",
+      "displayValue" : "Installment 4 Amount",
+      "pipeDelimitedList":false,
+      "number":3,
+      "readOnly":false,
+      "isMandatory":false
+    },
+    {
+      "name" : "InstallmentDueDates",
+      "displayValue" : "Installment 4 Date",
+      "pipeDelimitedList":false,
+      "number":3,
+      "readOnly":false,
+      "isMandatory":false,
+      "DateFormat":"MM/DD/YYYY"
+    },
+
+    {
+      "name" : "title",
+      "displayValue" : "Payee",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+    {
+      "name" : "name",
+      "displayValue" : "Addressee 1",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true
+    },
+    {
+      "name" : "AddressLine1",
+      "displayValue" : "Addressee 2",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+    {
+      "name" : "AddressLine2",
+      "displayValue" : "Address",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true
+    },
+     {
+      "name" : "PaymentCity",
+      "displayValue" : "City",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true
+    },
+     {
+      "name" : "PaymentState",
+      "displayValue" : "State",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true
+    },
+     {
+      "name" : "Zip",
+      "displayValue" : "Zip",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":true
+    },
+     {
+      "name" : "TaxPayerName",
+      "displayValue" : "Taxpayer Name",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "ReviewStatus",
+      "displayValue" : "Review Status",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false,
+      "isDropdown":true,
+      "values":[{"value":"Not Reviewed","text":"Not Reviewed"},{"value":"System Update","text":"System Update"},{"value":"Manual Import","text":"Manual Import"},{"value":"Research","text":"Research"}]
+    },
+     {
+      "name" : "AssignedStatus",
+      "displayValue" : "Owner",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false,
+      "isDropdown":true,
+      "values":[{"value":"Not Assigned","text":"Not Assigned"},{"value":"Misti","text":"Misti"},{"value":"Allyssa","text":"Allyssa"}]
+    },
+     {
+      "name" : "Notes",
+      "displayValue" : "Notes",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    }      
+    ],
+    "EditTaxonomy":{
+      "fields":[{
+        "name" : "hasaccountnumber",
+        "displayValue" : "Has Account Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasparcelnumber",
+        "displayValue" : "Has Parcel Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "haspropertynumber",
+        "displayValue" : "Has Property Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasmapnumber",
+        "displayValue" : "Has Folio Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "haskeynumber",
+        "displayValue" : "Has Key Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hastaxidnumber",
+        "displayValue" : "Has Tax ID Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasassessmentnumber",
+        "displayValue" : "Has Assessment Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasschedulenumber",
+        "displayValue" : "Has Schedule Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasownernumber",
+        "displayValue" : "Has Owner Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasfolionumber",
+        "displayValue" : "Has Unidentified Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "haspayto",
+        "displayValue" : "Pay To"
+        },
+        {
+        "name" : "addressaddressee1",
+        "displayValue" : "Address Line 1"
+        },
+        {
+        "name" : "addressaddressee2",
+        "displayValue" : "Address Line 2"
+        },
+        {
+        "name" : "streetaddress",
+        "displayValue" : "Address Line"
+        },
+        {
+        "name" : "appealcity",
+        "displayValue" : "City"
+        },
+        {
+        "name" : "appealstate",
+        "displayValue" : "State"
+        },
+        {
+        "name" : "zip",
+        "displayValue" : "Zip"
+        },
+        {
+        "name" : "paymentschedule",
+        "displayValue" : "Has Payment Options",
+        "isRadio":true,
+        "values":[{"value":"one","text":"One"},{"value":"two","text":"Two"},
+        {"value":"three","text":"Three"},
+        {"value":"four","text":"Four"},
+        {"value":"unknown","text":"Unknown"}]
+        },
+        {
+        "name" : "discountoption",
+        "displayValue" : "Discount Options",
+        "isRadio":true,
+        "values":[{"value":"no","text":"No"},{"value":"single","text":"Single"},{"value":"multiple","text":"Multiple"}
+          ]
+        }
+        ]
+
+    },
+    "commonFields" : [{
+      "name" : "DocumentType",
+      "displayValue" : "Document Type",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    },
+    {
+      "name" : "DocumentID",
+      "displayValue" : "Document ID",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    },
+    {
+      "name" : "DocumentName",
+      "displayValue" : "Document Name",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    }]
+  },
+
+  "RETURN" :{
+  "fields" : [
+      {
+        "name" : "DocumentType",
+        "displayValue" : "Document Type",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true,
+        "isDropdown": true,
+        "values": [{"value":"RETURN", "text": "Returns"},{"value":"ASSESSMENT", "text": "Assessment Notices"}, {"value": "TAXBILL", "text": "Taxbills"}]
+      },
+      {
+        "name" : "DocumentID",
+        "displayValue" : "Document ID",
+        "pipeDelimitedList":false,
+        "readOnly":true,
+        "isMandatory":false
+      },
+      {
+        "name" : "DocumentName",
+        "displayValue" : "Document Name",
+        "pipeDelimitedList":false,
+        "readOnly":true,
+        "isMandatory":false
+      },
+       {
+        "name" : "State",
+        "displayValue" : "State",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true
+      },
+       {
+        "name" : "AssessorName",
+        "displayValue" : "Assessor",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true
+      },
+      {
+        "name" : "TaxYear",
+        "displayValue" : "Tax Year",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true
+      },
+      {
+        "name" : "accounts",
+        "displayValue" : "Account IDs",
+        "pipeDelimitedList":true,
+        "pipeLimit":10,
+        "readOnly":false,
+        "isMandatory":true
+      },
+      {
+        "name" : "ReturnDueDate",
+        "displayValue" : "Return Due Date",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true,
+        "DateFormat":"MM/DD/YYYY"
+      },
+     {
+      "name" : "AddressLine1",
+      "displayValue" : "Address",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "ReturnCity",
+      "displayValue" : "City",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "ReturnState",
+      "displayValue" : "State",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "Zip",
+      "displayValue" : "Zip",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "TaxPayerName",
+      "displayValue" : "Taxpayer Name",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "ReviewStatus",
+      "displayValue" : "Review Status",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false,
+      "isDropdown":true,
+      "values":[{"value":"Not Reviewed","text":"Not Reviewed"},{"value":"System Update","text":"System Update"},{"value":"Manual Import","text":"Manual Import"},{"value":"Research","text":"Research"}]
+    },
+     {
+      "name" : "AssignedStatus",
+      "displayValue" : "Owner",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false,
+      "isDropdown":true,
+      "values":[{"value":"Not Assigned","text":"Not Assigned"},{"value":"Misti","text":"Misti"},{"value":"Allyssa","text":"Allyssa"}]
+    },
+     {
+      "name" : "Notes",
+      "displayValue" : "Notes",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    }  
+  ],
+   "EditTaxonomy":{
+      "fields":[{
+        "name" : "hasaccountnumber",
+        "displayValue" : "Has Account Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasparcelnumber",
+        "displayValue" : "Has Parcel Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "haspropertynumber",
+        "displayValue" : "Has Property Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasfolionumber",
+        "displayValue" : "Has Folio Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "haskeynumber",
+        "displayValue" : "Has Key Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hastaxidnumber",
+        "displayValue" : "Has Tax ID Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasassessmentnumber",
+        "displayValue" : "Has Assessment Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasschedulenumber",
+        "displayValue" : "Has Schedule Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasownernumber",
+        "displayValue" : "Has Owner Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasunidenitfiednumber",
+        "displayValue" : "Has Unidentified Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "streetaddress",
+        "displayValue" : "Address Line"
+        },
+        {
+        "name" : "city",
+        "displayValue" : "City"
+        },
+        {
+        "name" : "state",
+        "displayValue" : "State"
+        },
+        {
+        "name" : "zip",
+        "displayValue" : "Zip"
+        }
+        ]
+
+    },
+    "commonFields" : [{
+      "name" : "DocumentType",
+      "displayValue" : "Document Type",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    },
+    {
+      "name" : "DocumentID",
+      "displayValue" : "Document ID",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    },
+    {
+      "name" : "DocumentName",
+      "displayValue" : "Document Name",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    }]
+
+  },
+
+  "ASSESSMENT" :{
+  "fields" : [{
+        "name" : "DocumentType",
+        "displayValue" : "Document Type",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true,
+        "isDropdown": true,
+        "values": [{"value":"RETURN", "text": "Returns"},{"value":"ASSESSMENT", "text": "Assessment Notices"}, {"value": "TAXBILL", "text": "Taxbills"}]
+      },
+      {
+        "name" : "DocumentID",
+        "displayValue" : "Document ID",
+        "pipeDelimitedList":false,
+        "readOnly":true,
+        "isMandatory":false
+      },
+      {
+        "name" : "DocumentName",
+        "displayValue" : "Document Name",
+        "pipeDelimitedList":false,
+        "readOnly":true,
+        "isMandatory":false
+      },
+       {
+        "name" : "State",
+        "displayValue" : "State",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true
+      },
+       {
+        "name" : "AssessorName",
+        "displayValue" : "Assessor",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true
+      },
+      {
+        "name" : "TaxYear",
+        "displayValue" : "Tax Year",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true
+      },
+      {
+        "name" : "accounts",
+        "displayValue" : "Account IDs",
+        "pipeDelimitedList":true,
+        "pipeLimit":10,
+        "readOnly":false,
+        "isMandatory":true
+      },
+      {
+        "name" : "PropertyType",
+        "displayValue" : "Property Type",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true
+      },
+      {
+        "name" : "AppealDueDate",
+        "displayValue" : "Appeal Deadline",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":true,
+        "DateFormat":"MM/DD/YYYY"
+      },
+       {
+        "name" : "MarketValue",
+        "displayValue" : "Total Market Value",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":false
+      },
+       {
+        "name" : "MarketValueLand",
+        "displayValue" : "Market Land",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":false
+      },
+       {
+        "name" : "MarketValueBuilding",
+        "displayValue" : "Market Building",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":false
+      },
+       {
+        "name" : "MarketValueMisc",
+        "displayValue" : "Market Misc",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":false
+      },
+       {
+        "name" : "AssessedValue",
+        "displayValue" : "Total Assessed Value",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":false
+      },
+       {
+        "name" : "AssessedValueLand",
+        "displayValue" : "Assessed Land",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":false
+      },
+       {
+        "name" : "AssessedValueBuilding",
+        "displayValue" : "Assessed Building",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":false
+      },
+       {
+        "name" : "AssessedValueMisc",
+        "displayValue" : "Assessed Misc",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":false
+      },
+       {
+        "name" : "TaxableValue",
+        "displayValue" : "Total Taxable Value",
+        "pipeDelimitedList":false,
+        "readOnly":false,
+        "isMandatory":false
+      },
+     {
+      "name" : "AddressLine1",
+      "displayValue" : "Address",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "AppealCity",
+      "displayValue" : "City",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "AppealState",
+      "displayValue" : "State",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "Zip",
+      "displayValue" : "Zip",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "TaxPayerName",
+      "displayValue" : "Taxpayer Name",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    },
+     {
+      "name" : "ReviewStatus",
+      "displayValue" : "Review Status",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false,
+      "isDropdown":true,
+      "values":[{"value":"Not Reviewed","text":"Not Reviewed"},{"value":"System Update","text":"System Update"},{"value":"Manual Import","text":"Manual Import"},{"value":"Research","text":"Research"}]
+    },
+     {
+      "name" : "AssignedStatus",
+      "displayValue" : "Owner",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false,
+      "isDropdown":true,
+      "values":[{"value":"Not Assigned","text":"Not Assigned"},{"value":"Misti","text":"Misti"},{"value":"Allyssa","text":"Allyssa"}]
+    },
+     {
+      "name" : "Notes",
+      "displayValue" : "Notes",
+      "pipeDelimitedList":false,
+      "readOnly":false,
+      "isMandatory":false
+    }  
+  ],
+    "EditTaxonomy":{
+      "fields":[{
+        "name" : "hasaccountnumber",
+        "displayValue" : "Has Account Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasparcelnumber",
+        "displayValue" : "Has Parcel Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "haspropertynumber",
+        "displayValue" : "Has Property Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasmapnumber",
+        "displayValue" : "Has Folio Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "haskeynumber",
+        "displayValue" : "Has Key Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hastaxidnumber",
+        "displayValue" : "Has Tax ID Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasassessmentnumber",
+        "displayValue" : "Has Assessment Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasschedulenumber",
+        "displayValue" : "Has Schedule Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasownernumber",
+        "displayValue" : "Has Owner Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasfolionumber",
+        "displayValue" : "Has Unidentified Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "streetaddress",
+        "displayValue" : "Address Line"
+        },
+        {
+        "name" : "appealcity",
+        "displayValue" : "City"
+        },
+        {
+        "name" : "appealstate",
+        "displayValue" : "State"
+        },
+        {
+        "name" : "zip",
+        "displayValue" : "Zip"
+        },
+        {
+        "name" : "appealduedate",
+        "displayValue" : "Appeal Date"
+        },
+        {
+        "name" : "hasmarketnumber",
+        "displayValue" : "Has Market Number",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hasassessedvalue",
+        "displayValue" : "Has Assessed Value",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        },
+        {
+        "name" : "hastaxablevalue",
+        "displayValue" : "Has Taxable Value",
+        "isRadio":true,
+        "values":[{"value":"yes","text":"Yes"},{"value":"no","text":"No"}]
+        }
+        ]
+
+    },
+    "commonFields" : [{
+      "name" : "DocumentType",
+      "displayValue" : "Document Type",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    },
+    {
+      "name" : "DocumentID",
+      "displayValue" : "Document ID",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    },
+    {
+      "name" : "DocumentName",
+      "displayValue" : "Document Name",
+      "pipeDelimitedList":false,
+      "readOnly":true,
+      "isMandatory":false
+    }]
+
+  }
+
+
+}

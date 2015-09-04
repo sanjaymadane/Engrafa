@@ -1,0 +1,74 @@
+<div class="row-fluid">
+  <p><a target="_blank" href="{{url}}" id="" class="btn btn-primary">Click here to view the File</a></p>
+</div>
+
+<div class="row-fluid">
+  <div class="span6">
+
+    <cml:radios label="Can you determine the State?" name="validstate" instructions="Click the link to access the PDF." validates="required" aggregation="agg" gold="true">
+      <cml:radio label="Yes" value="Yes"></cml:radio>
+      <cml:radio label="No" value="No"></cml:radio>
+    </cml:radios>
+
+  </div>
+  <div class="span6">
+
+    <cml:select label="Enter the State:" instructions="Choose the State where the tax bill originated" default="Enter State here" name="state" validates="required" aggregation="agg" gold="true" only-if="validstate:[0]">
+      <cml:option label="Alabama - AL" value="AL"></cml:option>
+      <cml:option label="Alaska - AK" value="AK"></cml:option>
+      <cml:option label="Arizona - AZ" value="AZ"></cml:option>
+      <cml:option label="Arkansas - AR" value="AR"></cml:option>
+      <cml:option label="California - CA" value="CA"></cml:option>
+      <cml:option label="Colorado - CO" value="CO"></cml:option>
+      <cml:option label="Connecticut - CT" value="CT"></cml:option>
+      <cml:option label="Delaware - DE" value="DE"></cml:option>
+      <cml:option label="District of Columbia - DC" value="DC"></cml:option>
+      <cml:option label="Florida - FL" value="FL"></cml:option>
+      <cml:option label="Georgia - GA" value="GA"></cml:option>
+      <cml:option label="Hawaii - HI" value="HI"></cml:option>
+      <cml:option label="Idaho - ID" value="ID"></cml:option>
+      <cml:option label="Illinois - IL" value="IL"></cml:option>
+      <cml:option label="Indiana - IN" value="IN"></cml:option>
+      <cml:option label="Iowa - IA" value="IA"></cml:option>
+      <cml:option label="Kansas - KS" value="KS"></cml:option>
+      <cml:option label="Kentucky - KY" value="KY"></cml:option>
+      <cml:option label="Louisiana - LA" value="LA"></cml:option>
+      <cml:option label="Maine - ME" value="ME"></cml:option>
+      <cml:option label="Maryland - MD" value="MD"></cml:option>
+      <cml:option label="Massachusetts - MA" value="MA"></cml:option>
+      <cml:option label="Michigan - MI" value="MI"></cml:option>
+      <cml:option label="Minnesota - MN" value="MN"></cml:option>
+      <cml:option label="Mississippi - MS" value="MS"></cml:option>
+      <cml:option label="Missouri - MO" value="MO"></cml:option>
+      <cml:option label="Montana - MT" value="MT"></cml:option>
+      <cml:option label="Nebraska - NE" value="NE"></cml:option>
+      <cml:option label="Nevada - NV" value="NV"></cml:option>
+      <cml:option label="New Hampshire - NH" value="NH"></cml:option>
+      <cml:option label="New Jersey - NJ" value="NJ"></cml:option>
+      <cml:option label="New Mexico - NM" value="NM"></cml:option>
+      <cml:option label="New York - NY" value="NY"></cml:option>
+      <cml:option label="North Carolina - NC" value="NC"></cml:option>
+      <cml:option label="North Dakota - ND" value="ND"></cml:option>
+      <cml:option label="Ohio - OH" value="OH"></cml:option>
+      <cml:option label="Oklahoma - OK" value="OK"></cml:option>
+      <cml:option label="Oregon - OR" value="OR"></cml:option>
+      <cml:option label="Pennsylvania - PA" value="PA"></cml:option>
+      <cml:option label="Rhode Island - RI" value="RI"></cml:option>
+      <cml:option label="South Carolina - SC" value="SC"></cml:option>
+      <cml:option label="South Dakota - SD" value="SD"></cml:option>
+      <cml:option label="Tennessee - TN" value="TN"></cml:option>
+      <cml:option label="Texas - TX" value="TX"></cml:option>
+      <cml:option label="Utah - UT" value="UT"></cml:option>
+      <cml:option label="Vermont - VT" value="VT"></cml:option>
+      <cml:option label="Virginia - VA" value="VA"></cml:option>
+      <cml:option label="Washington - WA" value="WA"></cml:option>
+      <cml:option label="West Virginia - WV" value="WV"></cml:option>
+      <cml:option label="Wisconsin - WI" value="WI"></cml:option>
+      <cml:option label="Wyoming - WY" value="WY"></cml:option>
+    </cml:select>
+
+    <cml:group only-if="validstate:[1]" name="">
+      <p>Are you sure? There are VERY few bills where a state cannot be determined by the address of a property, sometimes the address of the property will be on a second or third page. If you are sure, please continue to the next unit!</p>
+    </cml:group>
+  </div>
+</div>

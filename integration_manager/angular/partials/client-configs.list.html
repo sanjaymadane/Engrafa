@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="row">
+		<a class="btn btn-default col-md-offset-4 col-md-4" href="/clientconfigs/new">Add Client Config</a>
+	</div>
+	<div class="row">
+		<table class="table table-striped">
+			<thead>
+				<th>Id</th>
+				<th>Client Id</th>
+				<th>Authentication Key</th>
+				<th>Webhooks</th>
+			</thead>
+		    <tbody>
+			    <tr data-ng-repeat="config in configs">
+			        <td>
+			        	<a href="/clientconfigs/{{config.id}}">{{config.id}}</a>
+			        </td>
+			        <td>{{config.clientId}}</td>
+			        <td>{{config.authenticationKey}}</td>
+			        <td>
+			        	{{config.webhooks.length}}
+			        </td>
+			    </tr>
+		    </tbody>
+		</table>
+	</div>
+</div>

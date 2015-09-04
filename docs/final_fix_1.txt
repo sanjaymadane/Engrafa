@@ -1,0 +1,183 @@
+section 2.4. Set up CrowdFlower jobs and the database
+according to requirement, you should provide a single command to call all these tasks. this is one of the major task.
+-> Added "npm run resetJobs" command. The third command cannot auto run because it should be run after modified the configuration.
+
+
+You must provide the script to remove the "access_token" and "refresh_token".
+Or it fails all the time.
+-> Asking in forum.
+
+
+Perform following command:
+$ npm run startWorkflow
+$ npm run startIntegration
+$ forever list
+Shows that server and worker ¡°uptime¡± is ¡°STOPPED¡±
+-> I cannot re-created this issue. It works if properly setup the configuration.
+
+
+README.md is not updated.
+-> Updated.
+
+
+All modules must share the same access token and refresh token.
+During running the instances, I found many duplicated files.
+Why don't you use only one access_token and one refresh_token?
+-> Asking in forum.
+
+
+$ npm run startInstances
+Above command is not successful every time.
+Sometimes the access token is updated by one module.
+The other modules still try using the old token.
+-> Asking in forum.
+
+
+RS asks to remove all existing DG. This is not properly handled.
+-> Fixed.
+
+
+workflow_manager/config/internal-jobs.example.json, any usage of this file?
+-> It's used for internal jobs setting.
+
+
+what is the resources folder used for?
+-> Fixed.
+
+
+jslint reports below error:
+workflow_manager/services/CrowdFlowerService.js
+#1 Unexpected 'call'.
+    var aRequest = request[method].call(request, url); // Line 78, Pos 40
+-> Fixed.
+
+
+1, check following in 210749_sub/docs/DeploymentGuide.doc
+--------
+W1_INPUT corresponds to the standard_input folder while W2_OUTPUT corresponds to the standard_ output folder.
+--------
+but i can not find W1_INPUT, W2_OUTPUT in root/workflow_manager/test_files/config.js
+Do you mean following configurations in root/workflow_manager/test_files/config.js ?
+--------
+line#24  CLIENT_A: {
+        STANDARD_INPUT: 3596323200,
+        STANDARD_OUTPUT: 3596324300
+    }
+--------
+-> Fixed. Added "In url" text.
+
+
+2, check 210749_foreverList_1.png
+------
+data:    [1] server            /usr/local/bin/node server.js            9334    9336    logs/server.log            STOPPED
+data:    [2] worker            /usr/local/bin/node worker.js            9337    9339    logs/worker.log            STOPPED
+------
+i got following in 210749_sub/maintenance/logs/server.log
+--------
+info: Express server listening on port 4030 in development mode
+-> Cannot re-created this issue. It works in my test.
+
+
+check following in page6 in DG
+-------
+Finally, prepare your database. Run: 
+$ node test_files/insert.js
+-------
+but there is no insert.js file under root/workflow_manager/test_files/ directory.
+is insert.js a copy of root/workflow_manager/test_files/insert.example.js 
+-> Fixed.
+
+
+please provide a jslint check file lint.sh for *nix.
+-> Asked in forum.
+
+
+6, Following test in "cr-engrafa-30050933-suite/integration_manager/test/UserTest.js" is totally removed, and you did not provide equivalent test for 403 error.
+--------
+line#31    it('Should require admin user', function (done) {
+        request(app)
+            .get('/users')
+            .set('Authorization', helper.token('user1', 'user1'))
+            .expect(403, done);
+    });
+--------
+-> This test case should be removed. The authorization part is by-pass in current test framework.
+
+
+7, cr-engrafa-30050933-suite/resources/db-dumps is totally removed
+-> Fixed.
+
+
+210749_sub/maintenance/Maintenance.js, and 210749_sub/maintenance/instances.js have similar functionality.
+1) Following function in these two files are exactly the same.
+function executeCommand(command, skip, callback)
+function stopAllInstances(callback)
+function startAllInstances(callback)
+2) Since Maintenance.js already contain stopAllInstances, and startAllInstances, i suggest combine these two files into one tool file.
+3) At least, common function should be extracted to a common place.
+4) To be consistent, Maintenance.js -> maintenance.js
+-> 
+1/2/3 Merged.
+4. It's confirmed in previous assembly to use the name "Maintenance.js".
+
+
+check following in EngrafaSuitePackageAssembly-RequirementsSpecification.pdf
+------
+e. Remove all existing Deployment Guides and provide a single Deployment Guide to prevent any confusions and provide only a single source of guiding the user on deployment.
+------
+But i can still find them in 210749_sub/docs/integration_manager_DG/, 210749_sub/docs/middleware_service_DG/, and 210749_sub/docs/workflow_manager_DG/
+-> Fixed.
+
+
+add the change log to the modified files, even though minor changes ar applied.
+-> Fixed. Added in all files.
+
+
+ $ grunt test
+Running "mochaTest:test" (mochaTest) task
+  APIController
+    1) "before each" hook
+  0 passing (88ms)
+  1 failing
+It is connection error. But I can connect to the mongoDB from the workflow
+  1)  "before each" hook:
+    Uncaught Error: failed to connect to [127.0.0.1:27017]
+      at net.js:441:14
+-> I cannot re-create this issue.
+
+
+Deployment Guide 2.4
+Finally, prepare your database. Run: 
+$ node test_files/insert.js
+Can not find the test_files/insert.js file
+-> Fixed.
+
+
+"W1_INPUT corresponds to the standard_input folder while W2_OUTPUT corresponds to the standard_ output folder."
+i am somewhat confused, what is W1_INPUT/OUTPUT? i can not find from your submission.
+-> Fixed.
+
+
+"In addition to this, you need to copy the values to the access_token and refresh_token files respectively."
+-> is this mandatory? afak, both files are created when the server is running.
+-> Fixed. Added text "is getting error".
+
+
+3. Database Setup
+you should not simply say "None", it is confused, the user may think no database is used.
+-> Fixed.
+
+
+Grunt test.
+When the instances are running.
+$ node test_files/populate.js
+reports connection closed error.
+I must stop all instances first.
+-> Fixed. Added text "In submission root directory, run ¡°forever stopall¡± to stop all instances before run test.".
+
+
+1, for following in DG ?
+These files in the ROOT directory (workflow_manager) itself.
+------
+what do you mean? Are these files in the ROOT directory, or in ROOT/workflow_manager ?
+-> Fixed.

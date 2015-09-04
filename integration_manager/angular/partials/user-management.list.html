@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="row">
+		<a class="btn btn-default col-md-offset-4 col-md-4" href="/users/new">Add User</a>
+	</div>
+	<div class="row">
+		<table class="table table-striped">
+			<thead>
+				<th>Id</th>
+				<th>Username</th>
+				<th>Client Id</th>
+				<th>Is Admin</th>
+			</thead>
+		    <tbody>
+			    <tr data-ng-repeat="user in users">
+			        <td>
+			        	<a href="/users/{{user.id}}">{{user.id}}</a>
+			        </td>
+			        <td>{{user.username}}</td>
+			        <td>{{user.clientId}}</td>
+			        <td>{{user.isAdmin}}</td>
+			    </tr>
+		    </tbody>
+		</table>
+	</div>
+</div>

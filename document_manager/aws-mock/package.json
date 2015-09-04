@@ -1,0 +1,34 @@
+{
+    "name": "aws-mock",
+    "version": "1.0.1",
+    "description": "Easily and automatically test essential AWS services with the language-agnostic aws-mock.",
+    "main": "build.gradle",
+    "devDependencies": {
+        "aws-sdk": "~2.0.0",
+        "chai": "~1.8.1",
+        "yahoo-arrow": "~0.2.0",
+        "http-proxy": "~0.10.3",
+        "grunt": "~0.4.2",
+        "grunt-cli": "~0.1.13",
+        "grunt-contrib-jshint": "~0.8.0"
+    },
+    "scripts": {
+        "test": "grunt jshint && ./node_modules/yahoo-arrow/node_modules/.bin/istanbul cover ./node_modules/yahoo-arrow/node_modules/.bin/_mocha ./example/nodejs/test/TestExamples.js -- -R spec && ./node_modules/yahoo-arrow/node_modules/.bin/istanbul check-coverage --statements 85 --functions 85 --branches 85 --lines 85"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/treelogic-swe/aws-mock.git"
+    },
+    "keywords": [
+        "aws",
+    "mock",
+    "ec2"
+        ],
+    "author": {
+        "name": "treelogic-swe.com"
+    },
+    "license": "MIT",
+    "readmeFilename": "README.md",
+    "_id": "aws-mock@1.0.1",
+    "_from": "aws-mock@"
+}

@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition 9.0.11.3078 (http://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Document">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Information" type="DocumentCommon" minOccurs="1" maxOccurs="1" />
+        <xs:element name="Content">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="TaxBillContent" type="TaxbillContentType"/>
+              <xs:element name="AssesmentContent" type="AssesmentContentType"/>
+              <xs:element name="ReturnContent" type="ReturnContentType"/>
+              <xs:element name="HearingContent" type="HearingContentType"/>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="DocumentCommon">
+    <xs:sequence>
+      <xs:element name="DocumentID" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="32" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="WorkflowName" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="10" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="DocumentType" type="DocType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DocumentName" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="128" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="DocumentFile" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:base64Binary">
+            <xs:minLength value="1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--TAXBILL-->
+  <xs:complexType name="TaxbillContentType">
+    <xs:sequence>
+      <xs:element name="Accounts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Account" minOccurs="1" maxOccurs="10">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="AccountNumber">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:minLength value="1" />
+                        <xs:maxLength value="100" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="State" type="StatesType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CollectorName" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="75" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PropertyType" type="PropertyType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TaxYear" type="xs:gYear" minOccurs="1" maxOccurs="1" />
+      <xs:element name="PayTo" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PaymentAddress" type="AddressType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="GrossamountDue" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2" />
+            <xs:totalDigits value="16"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="GrossamountDueDate" type="xs:date" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Installments">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Installment" minOccurs="1" maxOccurs="4">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="InstallmentAmountDue">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="2" />
+                        <xs:totalDigits value="16"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="InstallmentDueDate" type="xs:date" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TaxableValue" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2" />
+            <xs:totalDigits value="16"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="TaxPayerName" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="IncludesPenalty" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="PenaltyValueAmount" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2" />
+            <xs:totalDigits value="16"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PenaltyInterestAmount" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2" />
+            <xs:totalDigits value="16"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--ASSESMENT-->
+  <xs:complexType name="AssesmentContentType">
+    <xs:all>
+    </xs:all>
+  </xs:complexType>
+
+  <!--RETURN-->
+  <xs:complexType name="ReturnContentType">
+    <xs:all>
+    </xs:all>
+  </xs:complexType>
+
+  <!--HEARING-->
+  <xs:complexType name="HearingContentType">
+    <xs:all>
+    </xs:all>
+  </xs:complexType>
+
+  <!--Common Types-->
+  <xs:simpleType name="StatesType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AL" />
+      <xs:enumeration value="AK" />
+      <xs:enumeration value="AZ" />
+      <xs:enumeration value="AR" />
+      <xs:enumeration value="CA" />
+      <xs:enumeration value="CO" />
+      <xs:enumeration value="CT" />
+      <xs:enumeration value="DC" />
+      <xs:enumeration value="DE" />
+      <xs:enumeration value="FL" />
+      <xs:enumeration value="GA" />
+      <xs:enumeration value="HI" />
+      <xs:enumeration value="ID" />
+      <xs:enumeration value="IL" />
+      <xs:enumeration value="IN" />
+      <xs:enumeration value="IA" />
+      <xs:enumeration value="KS" />
+      <xs:enumeration value="KY" />
+      <xs:enumeration value="LA" />
+      <xs:enumeration value="ME" />
+      <xs:enumeration value="MD" />
+      <xs:enumeration value="MA" />
+      <xs:enumeration value="MI" />
+      <xs:enumeration value="MN" />
+      <xs:enumeration value="MS" />
+      <xs:enumeration value="MO" />
+      <xs:enumeration value="MT" />
+      <xs:enumeration value="NE" />
+      <xs:enumeration value="NV" />
+      <xs:enumeration value="NH" />
+      <xs:enumeration value="NJ" />
+      <xs:enumeration value="NM" />
+      <xs:enumeration value="NY" />
+      <xs:enumeration value="NC" />
+      <xs:enumeration value="ND" />
+      <xs:enumeration value="OH" />
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="OR" />
+      <xs:enumeration value="PA" />
+      <xs:enumeration value="RI" />
+      <xs:enumeration value="SC" />
+      <xs:enumeration value="SD" />
+      <xs:enumeration value="TN" />
+      <xs:enumeration value="TX" />
+      <xs:enumeration value="UT" />
+      <xs:enumeration value="VT" />
+      <xs:enumeration value="VA" />
+      <xs:enumeration value="WA" />
+      <xs:enumeration value="WV" />
+      <xs:enumeration value="WI" />
+      <xs:enumeration value="WY" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DocType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TAXBILL" />
+      <xs:enumeration value="ASSESMENT" />
+      <xs:enumeration value="RETURN" />
+      <xs:enumeration value="HEARING" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PropertyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PP" />
+      <xs:enumeration value="RE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="AddressLine1" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="75" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="AddressLine2" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="75" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="City" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="75" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="State" type="StatesType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Zip" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="20" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
