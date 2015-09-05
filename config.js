@@ -47,22 +47,22 @@ function getLastLogFile(cb) {
 module.exports = {
 
     //This represents ID of the Box folder for public files.
-    BOX_PUBLIC_FOLDER_ID : '2537497243',
+    BOX_PUBLIC_FOLDER_ID : '4445595678',
 
     //This represents Box REST API access token.
-    BOX_ACCESS_TOKEN : 'liijapX9iQNfZxZjdcY8tzd7wrAQ9fGK',
+    BOX_ACCESS_TOKEN : 'yrq71VMdnZxsZei8OeaArjX00wZ3UN8r',
 
     //This represents Box REST API refresh token.
-    BOX_REFRESH_TOKEN : 'YzviEVOcRGC8sJXI4bQ4WtQxKFBXdHdUvLBMrUabzztgmODWki3WAhyJb7wpxce0',
+    BOX_REFRESH_TOKEN : 'dWFAkagO6To3GWNbD4SaMBcQKhjjYSK8TpT6OHMcDkEa5w0crwKqo4a6aGf2cfLl',
 
     //This represents the token URL for Box OAuth2
     BOX_API_OAUTH_TOKEN_URL : 'https://www.box.com/api/oauth2/token',
 
     //This represents the client id of Box App
-    BOX_API_CLIENT_ID : '6k7lmrnw8739j24zcdxpemie96ov4v5x',
+    BOX_API_CLIENT_ID : 'tkxaf3ajacjaty2bva4g6enm5jc56z3q',
 
     //This represents the client secret of Box App
-    BOX_API_CLIENT_SECRET : 'KZVVgwZdSYCstNYmuXpjwD8AL8vJZHRZ',
+    BOX_API_CLIENT_SECRET : 'rhlTiLPiGbESmPGckY54h4GubJwQcDlF',
 
     //This represents the base URL of Box REST API
     BOX_API_BASE_URL : 'https://api.box.com/2.0',
@@ -83,7 +83,7 @@ module.exports = {
     //CROWDFLOWER_API_BASE_URL :  "http://localhost:3000",
 
     //This represents the API key of CrowdFlower REST API.
-    CROWDFLOWER_API_KEY : 'S3stXidDhH-wYkW4ofbN',
+    CROWDFLOWER_API_KEY : 'Z9swiimTksENTKoDgZgZ',
 
     //This represents the file name prefix for output XML files.
     OUTPUT_FILENAME_PREFIX : 'output--',
